@@ -1,0 +1,159 @@
+<!
+   BLIND_INTRO.HTML  ( 8/04/94)
+       Introduction to Blind Source Separation
+!>
+
+<title>Introduction to Blind Source Separation</title>
+<BODY text=#663300 vLink=#999900 aLink=#006600 link=#660000 bgColor=#ffffff background=images/romeVpubli.jpg>
+<h1>Introduction to Blind Source Separation</h1>
+<hr>
+<p>
+Recently, blind source separation by Independent Component Analysis
+(ICA) has received attention because of its potential applications in
+signal processing such as in speech recognition systems,
+telecommunications and medical signal processing.  The goal of ICA is
+to recover independent sources given only sensor observations that are
+unknown linear mixtures of the unobserved independent source signals.
+In contrast to correlation-based transformations such as Principal
+Component Analysis (PCA), ICA not only decorrelates the signals
+(2nd-order statistics) but also reduces higher-order statistical
+dependencies, attempting to make the signals as independent as
+possible.
+<p>
+There have been two different fields of research considering the
+analysis of independent components. On one hand, the study of
+separating mixed sources observed in an array of sensors has been a
+classical and difficult signal processing problem.  The seminal work
+on blind source separation is by Jutten, Herault and Guerin (1988)
+where they proposed an adaptive algorithm in a simple feedback
+architecture. The learning rule was based on an neuromimetic approach
+and was able to separate simultaneously unknown independent
+sources. This approach has been explained and further developed by
+Jutten and Herault (1991), Comon (1991), Karhunen and Joutsensalo
+(1993), Cichocki and Moszczynski (1992) and others.  Furthermore,
+Comon (1994) introduced the concept of independent component analysis
+and proposed cost functions related to the minimization of mutual
+information between the sensors.
+<p>
+On the other hand and in parallel to blind source separation studies
+unsupervised learning rules based on information-theory have been
+proposed by Linsker (1992), Becker and Hinton (1992) and others. The
+idea was to maximize the mutual information between the inputs and
+outputs of a neural network. This approach is related to redundancy
+reduction which was suggested by Barlow (1961) as a coding strategy in
+neurons. Each neuron should encode features that are statistically
+independent from other neurons. This leads to the notion of factorial
+code that has been explored for the visual processing strategy by
+Attik (1992).  Nadal and Parga (1994) showed that in the low-noise
+case, the maximum of the mutual information between the input and
+output of a neural processor implied that the output distribution was
+factorial.  Roth and Baram (1996) and Bell and Sejnowski (1995)
+independently derived stochastic gradient learning rules for this
+maximization and applied them, respectively to forecasting and time
+series analysis, and the blind separation of sources.  Bell and
+Sejnowski (1995) were the first explaining the blind source separation
+problem from an information-theoretic viewpoint and applying them to
+separation and deconvolution of sources.  Their adaptive methods are
+more plausible from a neural processing perspective than the
+cumulant-based cost functions proposed by Comon.  A similar adaptive
+but 'non-neural' method for source separation has been proposed by
+Cardoso and Laheld (1996).
+<p>
+Other algorithms have been proposed from different approaches: The
+maximum likelihood estimation approach was first proposed by Gaeta and
+Lacoume (1990), negentropy maximization approach by Girolami and Fyfe
+(1996), nonlinear PCA algorithm developed by Karhunen and Joutsensalo
+(1994) and Oja (1995).  Lee, Girolami and Sejnowski (1997) give an
+unifying framework to the source separation problem by explaining the
+relation of the different algorithms to each other.  The derived
+learning rule is optimized when the natural gradient (Amari, 1997) or
+relative gradient (Cardoso and Laheld, 1996) is used.
+<p>
+The originally proposed algorithm by Bell and Sejnowski (1995) was
+suited to separate super-Gaussian sources.  To overcome this
+limitation other techniques have been developed that were able to
+simultanously separate sub- and super-Gaussian sources.  Pearlmutter
+and Parra (1996) derive a generalized ICA learning rule from the
+maximum likelihood estimation where they explicitly model the
+underlying source distribution which was assumed to be fixed in the
+original algorithm. Although the density estimation was burdensome and
+required a sufficient amount of data, the algorithm was able to
+separate a fairly large number of source with a wide range of
+distributions. A more simple and highly effective algorithm has been
+proposed by Girolami and Fyfe (1996) from the negentropy maximization
+approach. They used an extended exploratory projection pursuit network
+with inhibitory lateral connections that could separate sub- and
+super-Gaussian sources.  Lee, Girolami and Sejnowski (1997) derive the
+same learning rule from the infomax approach preserving the simple
+architecture and showing superior convergence speed.
+<p>
+Extensive simulations have been performed to demonstrate the power of
+the learning algorithm.  However, instantaneous mixing and unmixing
+simulations are {\em toy} problems and the challenge lies in dealing
+with real world data.  Makeig et al. (1996) applied the original
+infomax algorithm to EEG and ERP data showing that the algorithm can
+extract EEG activations and isolate artifacts.  Jung et al. (1997)
+show that the extended infomax algorithm is able to linearly decompose
+EEG artifacts such as line noise, eye blinks, and cardiac noise into
+independent components with sub- and super-Gaussian distributions.
+McKeown et. al. (1997) have used the extended ICA algorithm to
+investigate task-related human brain activity in fMRI data.  By
+determining the brain regions that contained significant amounts of
+specific temporally independent components, they were able to specify
+the spatial distribution of transiently task-related brain
+activations.  Other potential applications may result from exploring
+independent features in natural images. Bell and Sejnowski (1997)
+suggest that independent components of natural scenes are edge
+filters. The filters are localized, mostly oriented and similar to
+Gabor like filters. The outputs of the ICA filters are sparsely
+distributed.  Bartlett and Sejnowski (1997) and Gray, Movellan and
+Sejnowski (1997) demonstrate the successful use of the ICA filters as
+features in face recognition tasks and lipreading tasks respectively.
+<p>
+For these applications, the instantaneous mixing model may be
+appropriate because the propagation delays are negligible.  However,
+in real environments substantial time-delays may occur and an
+architecture and algorithm is needed to account for the mixing of
+time-delayed sources and convolved sources.  The multichannel blind
+source separation problem has been addressed by Yellin and Weinstein
+(1994) and Ngyuen and Jutten (1995) and others based on $4^{th}$-order
+cumulants criteria. An extension to time-delays and convolved sources
+from the infomax viewpoint using a feedback architecture has been
+developed by Torkkola (1996). Lee, Bell and Lambert (1997) have
+extended the blind source separation problem to a full feedback system
+and a full feedforward system.  The feedforward architecture allows
+the inversion of non-minimum phase systems. In addition, the rules are
+extended using polynomial filter matrix algebra in the frequency
+domain (Lambert, 1996). The proposed method can successfully separate
+voices and music recorded in a real environment.  Lee, Bell and
+Orglmeister (1997) show that the recognition rate of an automatic
+speech recognition system is increased after separating the speech
+signals.
+<p>
+Since ICA is restricted and relies on several assumptions researchers
+have started to tackle a few limitations of ICA. One obvious but
+non-trivial extension is the nonlinear mixing model.  In (Hermann and
+Yang, 1996; Lin and Cowan, 1997; Pajunen, 1997) nonlinear components
+are extracted using self-organizing-feature-maps (SOFM).  Other
+researchers (Burel, 1992; Lee, Koehler and Orglmeister, 1997; Taleb
+and Jutten, 1997; Yang, Amari and Cichocki, 1997) have used a more
+direct extension to the previously presented ICA models. They include
+certain flexible nonlinearities in the mixing model and the goal is to
+invert the linear mixing matrix as well as the nonlinear mixing.
+Other limitations such as the under-determined problem in ICA, i.e.
+having less sensors than sources and noise models in the ICA
+formulation are subject to current research efforts.
+<p>
+ICA is a fairly new and a generally applicable method to several
+challenges in signal processing. It reveals a diversity of theoretical
+questions and opens a variety of potential applications.  Successful
+results in EEG, fMRI, speech recognition and face recognition systems
+indicate the power and optimistic hope in the new paradigm.
+<p>
+
+
+
+
+
+
+
